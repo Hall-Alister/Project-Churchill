@@ -32,7 +32,7 @@ Powerful? Definitely.
 
 But not complicated.
 
-The more I've learnt about Linux, the more I've realised that complexity isn't the enemy. Hidden complexity is.
+The more time I've spent using Linux, the more I've realised that complexity isn't the enemy. Hidden complexity is.
 
 When something breaks, I don't want the answer to be "trust the system."
 
@@ -66,7 +66,7 @@ At first they don't seem to have much in common, but I think they all point towa
 
 Good design shouldn't get in the way.
 
-Water doesn't force itself through a mountain. It slowly finds another path.
+Water doesn't force itself through a mountain. It slowly finds another path. These aren't design references, as much as examples of how good systems should behave.
 
 Great cathedrals weren't impressive because they were enormous. They were impressive because they made light feel like part of the architecture.
 
@@ -107,6 +107,4 @@ Either way, I want every decision to be documented, every file to be understanda
 That's the desktop I wish I'd found when I first installed Linux.
 
 So I decided to start building it.
-
-I'm calling it **Project Churchill**.
 
