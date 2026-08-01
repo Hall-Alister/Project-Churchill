@@ -1,11 +1,5 @@
 import { Gtk } from "ags/gtk4"
 
-import Dock from "./Dock"
-
-import ActiveWindow from "./modules/active-window/ActiveWindow"
-import Clock from "./modules/clock/Clock"
-import Workspaces from "./modules/workspaces/Workspaces"
-
 import { MODULES } from "../config/Bar"
 
 
@@ -61,11 +55,15 @@ function LeftRegion() {
             hexpand
         >
 
-            {
-                MODULES.activeWindow
-                    ? <ActiveWindow/>
-                    : null
-            }
+         <label
+             class="active-window-title"
+             label="Project Churchill"
+          />
+
+         <label
+             class="active-window-detail"
+             label="First bar prototype"
+          />
 
         </box>
 
@@ -103,18 +101,15 @@ function CentreRegion() {
 
         >
 
-            {
-                MODULES.workspaces
-                    ? <Workspaces/>
-                    : null
-            }
+        <label
+            class="workspace"
+            label="1 2 3 4"
+        />
 
-
-            {
-                MODULES.clock
-                    ? <Clock/>
-                    : null
-            }
+        <label
+            class="clock"
+            label="15:34"
+        />
 
 
         </box>
@@ -149,7 +144,10 @@ function RightRegion() {
 
         >
 
-            <Dock/>
+            <label
+                class="placeholder-module"
+                label="☰"
+            />
 
         </box>
 

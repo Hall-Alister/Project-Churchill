@@ -1,18 +1,11 @@
 import app from "ags/gtk4/app"
-import { Astal } from "ags/gtk4"
+import css from "./bar/bar.scss"
+import Bar from "./bar/Bar"
 
 app.start({
-    main() {
-        const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
+    css,
 
-        return (
-            <window
-                visible
-                anchor={TOP | LEFT | RIGHT}
-                exclusivity="exclusive"
-            >
-                <label label="Project Churchill" />
-            </window>
-        )
+    main() {
+        Bar()
     },
 })
