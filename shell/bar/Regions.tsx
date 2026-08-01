@@ -1,5 +1,9 @@
 import { Gtk } from "ags/gtk4"
 
+import Clock from "./modules/clock/Clock"
+import Workspaces from "./modules/workspaces/Workspaces"
+import ActiveWindow from "./modules/active-window/ActiveWindow"
+
 import { MODULES } from "../config/Bar"
 
 
@@ -55,15 +59,7 @@ function LeftRegion() {
             hexpand
         >
 
-         <label
-             class="active-window-title"
-             label="Project Churchill"
-          />
-
-         <label
-             class="active-window-detail"
-             label="First bar prototype"
-          />
+         <ActiveWindow/>
 
         </box>
 
@@ -101,15 +97,9 @@ function CentreRegion() {
 
         >
 
-        <label
-            class="workspace"
-            label="1 2 3 4"
-        />
+        <Workspaces/>
 
-        <label
-            class="clock"
-            label="15:34"
-        />
+        <Clock/>
 
 
         </box>
