@@ -1,220 +1,165 @@
 /*
- * Churchill Bar
- *
- * This file controls appearance only.
- *
- * Structural layout:
- *     shell/bar/Bar.tsx
- *
- * Theme values:
- *     theme/theme.json
- *
- * These values are currently prototype values and will
- * eventually be supplied by the Churchill theme system.
- */
+============================================================
+Project Churchill
+Base Bar Styling
+
+This file controls layout and widget appearance.
+
+Colours come from generated/theme.css.
+Do not hardcode colours here.
+============================================================
+*/
 
 
-/*
- * ============================================================
- * BAR WINDOW
- * ============================================================
- *
- * The window itself is transparent.
- * The visible rounded rectangle is .bar-content.
- */
+.bar {
 
-.churchill-bar {
-    background: transparent;
-    color: #f4f7fb;
+    background: var(--churchill-background);
+
+    color: var(--churchill-text);
+
+    min-height: 36px;
+
+    padding: 6px 12px;
+
 }
 
 
 /*
- * ============================================================
- * MAIN BAR
- * ============================================================
- */
+============================================================
+REGIONS
+============================================================
+*/
 
-.bar-content {
-    /*
-     * Overall height of the bar.
-     */
-    min-height: 48px;
 
-    /*
-     * Distance from the monitor edges.
-     *
-     * top right bottom left
-     */
-    margin: 8px 12px 0 12px;
+.bar-left {
 
-    /*
-     * Space between the visible bar edge and its modules.
-     */
-    padding: 0 16px;
+    padding-left: 8px;
 
-    /*
-     * Temporary prototype background.
-     */
-    background: rgba(20, 25, 32, 0.94);
-
-    /*
-     * Corner radius.
-     */
-    border-radius: 14px;
 }
 
-/*
- * ============================================================
- * BAR REGIONS
- * ============================================================
- *
- * These three regions form the structural columns of the bar.
- *
- * Layout:
- *
- *     LEFT       |       CENTRE       |       RIGHT
- *
- * The actual expansion is controlled in Bar.tsx with hexpand.
- * CSS only prevents the regions from demanding unnecessary
- * minimum widths.
- */
 
-.bar-region {
-    min-width: 0;
+.bar-centre {
+
+
+
 }
 
-.bar-left,
-.bar-centre,
+
 .bar-right {
-    min-width: 0;
+
+    padding-right: 8px;
+
 }
 
-/*
- * ============================================================
- * ACTIVE WINDOW
- * ============================================================
- */
-
 
 /*
- * Main active-window title.
- */
+============================================================
+ACTIVE WINDOW
+============================================================
+*/
+
+
 .active-window-title {
-    font-size: 15px;
-    font-weight: 800;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
 }
 
 
-/*
- * Secondary active-window detail.
- *
- * The actual vertical gap is controlled by spacing={6}
- * in Bar.tsx because this is structural spacing.
- */
 .active-window-detail {
-    font-size: 12px;
-    font-weight: 500;
 
-    color: rgba(244, 247, 251, 0.62);
+    font-size: 11px;
+
+    opacity: 0.65;
+
 }
 
 
 /*
- * ============================================================
- * WORKSPACES
- * ============================================================
- */
+============================================================
+WORKSPACES
+============================================================
+*/
+
 
 .workspaces {
-    /*
-     * Space between the workspace group and neighbouring
-     * centre elements.
-     */
-    margin: 0 12px;
+
+
+
 }
 
 
-/*
- * Individual workspace indicator.
- */
 .workspace {
-    min-width: 28px;
-    min-height: 28px;
 
-    margin: 0 2px;
-    padding: 5px 8px;
+    min-width: 22px;
 
-    border-radius: 8px;
+    min-height: 22px;
 
-    color: rgba(244, 247, 251, 0.58);
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: var(--churchill-text);
+
 }
 
 
-/*
- * Active workspace.
- */
 .workspace.active {
-    color: #ffffff;
-    background: #3478d4;
+
+    background: var(--churchill-accent);
+
+    color: var(--churchill-background);
+
 }
 
 
 /*
- * ============================================================
- * CLOCK
- * ============================================================
- */
+============================================================
+CLOCK
+============================================================
+*/
+
 
 .clock {
-    min-width: 70px;
 
-    padding: 6px 10px;
+    font-weight: 600;
 
-    border-radius: 8px;
+    padding-left: 10px;
 
-    color: #ffffff;
-    background: rgba(74, 115, 170, 0.45);
+    padding-right: 10px;
+
 }
 
 
 /*
- * ============================================================
- * MENU PLACEHOLDER
- * ============================================================
- */
-
-.placeholder-module {
-    min-width: 32px;
-    min-height: 32px;
-
-    padding: 5px 8px;
-
-    border-radius: 9px;
-
-    color: rgba(244, 247, 251, 0.8);
-}
-
-/*
-==========================================================
+============================================================
 RIGHT DOCK
-==========================================================
+============================================================
 */
+
 
 .right-dock {
-    margin-right: 8px;
+
+    
+
 }
 
-/*
-Every slot is identical.
-
-This is the foundation for all Churchill widgets.
-*/
 
 .slot {
 
-    min-width: 28px;
-    min-height: 28px;
+    min-width: 32px;
 
-    border-radius: 8px;
+    min-height: 32px;
+
+}
+
+
+.placeholder-module {
+
+    font-size: 20px;
+
+    padding: 6px;
+
 }
