@@ -11,7 +11,7 @@
     "url": "git+https://github.com/Hall-Alister/Project-Churchill.git"
   },
   "keywords": [],
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Hall-Alister/Project-Churchill/issues"
   },

@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
 
-        "target": "ES2023",
+        "target": "ES2022",
 
         "module": "ESNext",
 
@@ -9,29 +9,21 @@
 
         "strict": true,
 
-        "allowJs": false,
+        "allowJs": true,
 
-        "jsx": "react-jsx",
+        "checkJs": false,
 
-        "jsxImportSource": "ags",
-
-        "esModuleInterop": true,
-
-        "resolveJsonModule": true,
+        "noEmit": true,
 
         "skipLibCheck": true,
 
-        "isolatedModules": true,
-
-        "forceConsistentCasingInFileNames": true
+        "resolveJsonModule": true
 
     },
 
     "include": [
-
         "shell/**/*",
-
         "tools/**/*"
-
     ]
 }
+
