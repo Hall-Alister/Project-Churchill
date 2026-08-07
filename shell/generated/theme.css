@@ -1,0 +1,21 @@
+
+:root {
+
+    --churchill-background: #16181d;
+    --churchill-background-secondary: #20242c;
+
+    --churchill-text: #ffffff;
+    --churchill-text-secondary: #a6adbb;
+
+    --churchill-accent: #4d8dff;
+
+    --churchill-workspace-active: #4d8dff;
+    --churchill-workspace-occupied: #6c9cff;
+
+    --churchill-radius: 18px;
+
+    --churchill-padding: 12px;
+
+    --churchill-module-spacing: 8px;
+
+}
