@@ -1,1 +1,49 @@
+{
+    "name": "Churchill Default",
 
+    "version": 1,
+
+    "appearance": {
+        "mode": "dark"
+    },
+
+    "colors": {
+
+        "background": "#16181d",
+
+        "backgroundSecondary": "#20242c",
+
+        "text": "#ffffff",
+
+        "textSecondary": "#a6adbb",
+
+        "accent": "#4d8dff",
+
+        "workspaceActive": "#4d8dff",
+
+        "workspaceOccupied": "#6c9cff"
+
+    },
+
+
+    "geometry": {
+
+        "radius": 18,
+
+        "padding": 12,
+
+        "moduleSpacing": 8
+
+    },
+
+
+    "typography": {
+
+        "font": "sans-serif",
+
+        "titleWeight": 700,
+
+        "detailWeight": 400
+
+    }
+}
