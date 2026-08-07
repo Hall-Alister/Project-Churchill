@@ -1,0 +1,27 @@
+{
+  "name": "project-churchill",
+  "version": "1.0.0",
+  "description": "I decided to build Project Churchill after running Linux for the first time on an old 2012 laptop.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hall-Alister/Project-Churchill.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Hall-Alister/Project-Churchill/issues"
+  },
+  "homepage": "https://github.com/Hall-Alister/Project-Churchill#readme",
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "tsx": "^4.23.10",
+    "typescript": "^7.0.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true
+  }
+}
