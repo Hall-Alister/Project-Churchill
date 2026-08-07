@@ -1,42 +1,32 @@
-/*
-============================================================
-Churchill Theme Compiler
+import theme from "../../theme/theme.json"
 
-Converts theme.json into GTK CSS variables.
-
-Nothing in Churchill should directly depend on JSON.
-
-Everything depends on CSS variables.
-
-============================================================
-*/
-
-import Theme from "./Theme"
 
 export function compileTheme(): string {
 
-    const t = Theme
+    const variables = {
 
-    return `
-:root {
+        ...theme.colors,
 
-    --churchill-background: ${t.colors.background};
-    --churchill-background-secondary: ${t.colors.backgroundSecondary};
+        ...theme.dimensions,
 
-    --churchill-text: ${t.colors.text};
-    --churchill-text-secondary: ${t.colors.textSecondary};
+        ...theme.typography
 
-    --churchill-accent: ${t.colors.accent};
+    }
 
-    --churchill-workspace-active: ${t.colors.workspaceActive};
-    --churchill-workspace-occupied: ${t.colors.workspaceOccupied};
 
-    --churchill-radius: ${t.geometry.radius}px;
+    let css = ":root {\n"
 
-    --churchill-padding: ${t.geometry.padding}px;
 
-    --churchill-module-spacing: ${t.geometry.moduleSpacing}px;
+    for (const [key, value] of Object.entries(variables)) {
 
-}
-`
+        css += `    --churchill-${key}: ${value};\n`
+
+    }
+
+
+    css += "}\n"
+
+
+    return css
+
 }

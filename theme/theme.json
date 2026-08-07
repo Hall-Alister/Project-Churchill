@@ -1,49 +1,54 @@
 {
-    "name": "Churchill Default",
-
-    "version": 1,
-
-    "appearance": {
-        "mode": "dark"
-    },
-
     "colors": {
 
         "background": "#16181d",
 
-        "backgroundSecondary": "#20242c",
+        "surface": "#20242c",
+
+        "surface_hover": "#2a303b",
 
         "text": "#ffffff",
 
-        "textSecondary": "#a6adbb",
+        "text_muted": "#9ca3af",
 
-        "accent": "#4d8dff",
-
-        "workspaceActive": "#4d8dff",
-
-        "workspaceOccupied": "#6c9cff"
+        "accent": "#4d8dff"
 
     },
 
+    "dimensions": {
 
-    "geometry": {
+        "bar_height": "42px",
 
-        "radius": 18,
+        "space_xs": "4px",
 
-        "padding": 12,
+        "space_sm": "8px",
 
-        "moduleSpacing": 8
+        "space_md": "12px",
+
+        "space_lg": "18px",
+
+        "radius_sm": "4px",
+
+        "radius_md": "8px",
+
+        "radius_lg": "12px"
 
     },
-
 
     "typography": {
 
-        "font": "sans-serif",
+        "font_family": "Inter",
 
-        "titleWeight": 700,
+        "size_sm": "11px",
 
-        "detailWeight": 400
+        "size_md": "14px",
+
+        "size_lg": "18px",
+
+        "weight_normal": "400",
+
+        "weight_bold": "700"
 
     }
+
 }

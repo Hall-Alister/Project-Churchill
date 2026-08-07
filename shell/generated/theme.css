@@ -1,21 +1,22 @@
-
 :root {
-
     --churchill-background: #16181d;
-    --churchill-background-secondary: #20242c;
-
+    --churchill-surface: #20242c;
+    --churchill-surface_hover: #2a303b;
     --churchill-text: #ffffff;
-    --churchill-text-secondary: #a6adbb;
-
+    --churchill-text_muted: #9ca3af;
     --churchill-accent: #4d8dff;
-
-    --churchill-workspace-active: #4d8dff;
-    --churchill-workspace-occupied: #6c9cff;
-
-    --churchill-radius: 18px;
-
-    --churchill-padding: 12px;
-
-    --churchill-module-spacing: 8px;
-
+    --churchill-bar_height: 42px;
+    --churchill-space_xs: 4px;
+    --churchill-space_sm: 8px;
+    --churchill-space_md: 12px;
+    --churchill-space_lg: 18px;
+    --churchill-radius_sm: 4px;
+    --churchill-radius_md: 8px;
+    --churchill-radius_lg: 12px;
+    --churchill-font_family: Inter;
+    --churchill-size_sm: 11px;
+    --churchill-size_md: 14px;
+    --churchill-size_lg: 18px;
+    --churchill-weight_normal: 400;
+    --churchill-weight_bold: 700;
 }

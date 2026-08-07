@@ -17,9 +17,9 @@ Do not hardcode colours here.
 
     color: var(--churchill-text);
 
-    min-height: 36px;
+    min-height: var(--churchill-bar_height);
 
-    padding: 6px 12px;
+    padding: var(--churchill-space_sm) var(--churchill-space_md);
 
 }
 
@@ -61,9 +61,9 @@ ACTIVE WINDOW
 
 .active-window-title {
 
-    font-size: 14px;
+    font-size: var(--churchill-size_md);
 
-    font-weight: 700;
+    font-weight: var(--churchill-weight_bold);
 
 }
 
