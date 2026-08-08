@@ -1,5 +1,5 @@
 import Slot from "./Slot"
-import { DOCK } from "../config/Bar"
+import { DOCK } from "../core/Bar"
 
 
 /*

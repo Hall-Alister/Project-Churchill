@@ -1,0 +1,200 @@
+/*
+ * ============================================================
+ * PROJECT CHURCHILL
+ * Light Frosted Glass
+ * ============================================================
+ */
+
+window {
+    background-color: transparent;
+    color: var(--churchill-text);
+}
+
+
+/* ============================================================
+ * MAIN BAR
+ * ============================================================ */
+
+.bar {
+    min-height: var(--churchill-bar_height);
+
+    padding: 7px 12px;
+
+    background-color: rgba(241, 244, 246, 0.92);
+
+    border: 1px solid rgba(115, 123, 132, 0.72);
+    border-top-color: rgba(197, 203, 209, 0.95);
+    border-radius: 14px;
+
+    box-shadow:
+        0 2px 5px rgba(70, 80, 90, 0.16),
+        0 8px 20px rgba(45, 55, 65, 0.20),
+        0 16px 30px rgba(45, 55, 65, 0.10);
+
+    color: var(--churchill-text);
+}
+
+
+/* ============================================================
+ * LEFT REGION
+ * ============================================================ */
+
+.bar-left {
+    color: var(--churchill-text);
+    padding: 2px 8px;
+}
+
+.active-window-title {
+    color: var(--churchill-text);
+
+    font-family: var(--churchill-font_family);
+    font-size: var(--churchill-size_md);
+    font-weight: var(--churchill-weight_bold);
+
+    letter-spacing: 0.2px;
+}
+
+.active-window-detail {
+    color: var(--churchill-text_muted);
+
+    font-family: var(--churchill-font_family);
+    font-size: var(--churchill-size_sm);
+    font-weight: var(--churchill-weight_normal);
+
+    letter-spacing: 0.1px;
+}
+
+
+/* ============================================================
+ * CENTRE REGION
+ * ============================================================ */
+
+.bar-centre {
+    color: var(--churchill-text);
+}
+
+
+/* ============================================================
+ * WORKSPACES
+ * ============================================================ */
+
+.workspaces {
+    padding: 3px 5px;
+
+    background-color: rgba(220, 227, 233, 0.48);
+
+    border: 1px solid rgba(115, 123, 132, 0.28);
+    border-radius: 9px;
+}
+
+.workspace {
+    min-width: 22px;
+    min-height: 22px;
+
+    padding: 2px 5px;
+
+    border-radius: 6px;
+
+    color: var(--churchill-text_muted);
+
+    font-family: var(--churchill-font_family);
+    font-size: var(--churchill-size_sm);
+    font-weight: var(--churchill-weight_bold);
+}
+
+.workspace:hover {
+    background-color: rgba(255, 255, 255, 0.55);
+    color: var(--churchill-text);
+}
+
+.workspace.active {
+    background-color: var(--churchill-accent_surface);
+
+    border: 1px solid rgba(102, 140, 199, 0.42);
+
+    color: var(--churchill-accent_dark);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.65),
+        0 2px 5px rgba(73, 107, 159, 0.14);
+}
+
+
+/* ============================================================
+ * CLOCK
+ * ============================================================ */
+
+.clock {
+    color: var(--churchill-text);
+
+    font-family: var(--churchill-font_family);
+    font-size: var(--churchill-size_md);
+    font-weight: var(--churchill-weight_bold);
+
+    letter-spacing: 0.3px;
+}
+
+
+/* ============================================================
+ * RIGHT SIDE
+ * ============================================================ */
+
+.bar-right {
+    color: var(--churchill-text);
+}
+
+.slot {
+    color: var(--churchill-text);
+}
+
+.right-dock {
+    color: var(--churchill-text);
+}
+
+
+/* ============================================================
+ * MENU / PLACEHOLDER
+ * ============================================================ */
+
+.placeholder-module {
+    min-width: 28px;
+    min-height: 28px;
+
+    padding: 2px 6px;
+
+    background-color: rgba(255, 255, 255, 0.52);
+
+    border: 1px solid rgba(115, 123, 132, 0.48);
+    border-radius: 8px;
+
+    color: var(--churchill-text);
+
+    font-family: var(--churchill-font_family);
+    font-size: var(--churchill-size_lg);
+    font-weight: var(--churchill-weight_normal);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.72),
+        0 2px 5px rgba(70, 80, 90, 0.12);
+}
+
+.placeholder-module:hover {
+    background-color: rgba(255, 255, 255, 0.78);
+
+    border-color: rgba(102, 140, 199, 0.52);
+
+    color: var(--churchill-accent_dark);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.85),
+        0 3px 8px rgba(73, 107, 159, 0.16);
+}
+
+
+/* ============================================================
+ * LABEL SAFETY
+ * ============================================================ */
+
+label {
+    color: var(--churchill-text);
+}

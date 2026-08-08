@@ -1,199 +1,152 @@
-:root {
-    /*
-     * Churchill semantic aliases.
-     *
-     * The compiler generates the underlying tokens.
-     * These aliases make component CSS readable and give
-     * us one place to change the design language later.
-     */
-
-    --churchill-bg: var(--churchill-background);
-    --churchill-surface-1: var(--churchill-surface);
-    --churchill-surface-2: var(--churchill-surface_hover);
-
-    --churchill-fg: var(--churchill-text);
-    --churchill-fg-muted: var(--churchill-text_muted);
-    --churchill-accent-color: var(--churchill-accent);
-
-    --churchill-border-color: var(--churchill-effects_border);
-
-    --churchill-bar-radius: var(--churchill-components_module_radius);
-    --churchill-module-padding: var(--churchill-components_module_padding);
+.bar-container {
+    min-width: 0;
+    padding: 0;
 }
 
-
-/*
- * ============================================================
- * BAR
- * ============================================================
- */
+window {
+    background: rgba(0, 0, 0, 0);
+}
 
 .bar {
-    background: var(--churchill-bg);
-    color: var(--churchill-fg);
+    min-width: 0;
+    width: auto;
 
-    min-height: var(--churchill-bar_height);
+    min-height: var(--churchill-dimensions_bar_height);
+    padding: 7px 12px;
 
-    padding: var(--churchill-components_bar_padding);
+    background: var(--churchill-material_bar_background);
 
-    border-bottom: 1px solid var(--churchill-border-color);
+    border: var(--churchill-components_bar_border_width)
+            solid
+            var(--churchill-material_bar_border);
+
+    border-radius: var(--churchill-material_bar_radius);
+
+    box-shadow:
+        0 2px 4px var(--churchill-effects_shadow),
+        0 7px 18px var(--churchill-effects_shadow_strong),
+        0 16px 32px var(--churchill-effects_shadow);
+
+    color: var(--churchill-colors_text);
 }
-
-
-/*
- * ============================================================
- * REGIONS
- * ============================================================
- */
-
-.bar-left,
-.bar-centre,
-.bar-right {
-    background: var(--churchill-surface-1);
-
-    border: 1px solid var(--churchill-border-color);
-    border-radius: var(--churchill-bar-radius);
-
-    padding: var(--churchill-module-padding);
-}
-
-
-/*
- * ============================================================
- * LEFT / ACTIVE WINDOW
- * ============================================================
- */
 
 .bar-left {
-    min-width: 0;
+    min-width: 180px;
+    padding: 2px 10px;
 }
 
 .active-window-title {
-    color: var(--churchill-fg);
-
+    color: var(--churchill-text);
     font-family: var(--churchill-font_family);
     font-size: var(--churchill-size_md);
     font-weight: var(--churchill-weight_bold);
-
     letter-spacing: 0.2px;
 }
 
 .active-window-detail {
-    color: var(--churchill-fg-muted);
-
+    color: var(--churchill-text_muted);
     font-family: var(--churchill-font_family);
     font-size: var(--churchill-size_sm);
-
-    opacity: var(--churchill-effects_opacity_muted);
+    font-weight: var(--churchill-weight_normal);
+    letter-spacing: 0.1px;
 }
 
-
-/*
- * ============================================================
- * CENTRE
- * ============================================================
- */
-
 .bar-centre {
-    min-width: 0;
+    min-width: 180px;
+    color: var(--churchill-text);
 }
 
 .workspaces {
-    spacing: var(--churchill-space_sm);
+    padding: 3px 5px;
+
+    background: rgba(220, 227, 233, 0.52);
+
+    border: 1px solid rgba(115, 123, 132, 0.25);
+    border-radius: 10px;
 }
 
 .workspace {
-    min-width: 26px;
-    min-height: 26px;
+    min-width: 22px;
+    min-height: 22px;
+    padding: 2px 5px;
 
-    padding: 0;
+    border-radius: 6px;
 
-    border-radius: var(--churchill-radius_md);
-
-    color: var(--churchill-fg-muted);
+    color: var(--churchill-text_muted);
 
     font-family: var(--churchill-font_family);
-    font-size: var(--churchill-size_md);
-    font-weight: var(--churchill-weight_normal);
-
-    background: transparent;
+    font-size: var(--churchill-size_sm);
+    font-weight: var(--churchill-weight_bold);
 }
 
 .workspace:hover {
-    background: var(--churchill-surface-2);
-    color: var(--churchill-fg);
+    background: rgba(255, 255, 255, 0.60);
+    color: var(--churchill-text);
 }
 
 .workspace.active {
-    background: var(--churchill-accent-color);
-    color: var(--churchill-bg);
+    background: rgba(220, 229, 242, 0.90);
 
-    font-weight: var(--churchill-weight_bold);
+    border: 1px solid rgba(102, 140, 199, 0.42);
+
+    color: var(--churchill-accent_dark);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.75),
+        0 2px 6px rgba(73, 107, 159, 0.14);
 }
 
-
-/*
- * ============================================================
- * CLOCK
- * ============================================================
- */
-
 .clock {
-    color: var(--churchill-fg);
+    color: var(--churchill-text);
 
     font-family: var(--churchill-font_family);
     font-size: var(--churchill-size_md);
     font-weight: var(--churchill-weight_bold);
 
-    padding-left: var(--churchill-space_sm);
-    padding-right: var(--churchill-space_sm);
+    letter-spacing: 0.3px;
 }
 
-
-/*
- * ============================================================
- * RIGHT DOCK
- * ============================================================
- */
-
 .bar-right {
-    min-width: 0;
+    min-width: 180px;
+    color: var(--churchill-text);
 }
 
 .right-dock {
-    min-width: 0;
+    color: var(--churchill-text);
 }
 
 .placeholder-module {
     min-width: 30px;
-    min-height: 30px;
+    min-height: 28px;
+    padding: 2px 6px;
 
-    border-radius: var(--churchill-radius_md);
+    background: rgba(255, 255, 255, 0.60);
 
-    color: var(--churchill-fg);
+    border: 1px solid rgba(115, 123, 132, 0.48);
+    border-radius: 9px;
+
+    color: var(--churchill-text);
 
     font-family: var(--churchill-font_family);
     font-size: var(--churchill-size_lg);
-    font-weight: var(--churchill-weight_bold);
 
-    background: transparent;
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.80),
+        0 2px 6px rgba(70, 80, 90, 0.14);
 }
 
 .placeholder-module:hover {
-    background: var(--churchill-surface-2);
+    background: rgba(255, 255, 255, 0.82);
+
+    border-color: rgba(102, 140, 199, 0.52);
+
+    color: var(--churchill-accent_dark);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.90),
+        0 4px 9px rgba(73, 107, 159, 0.16);
 }
-
-
-/*
- * ============================================================
- * GENERAL GTK CLEANUP
- * ============================================================
- */
 
 label {
-    margin: 0;
-}
-
-window {
-    color: var(--churchill-fg);
+    color: var(--churchill-text);
 }

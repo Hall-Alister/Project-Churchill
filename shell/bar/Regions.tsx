@@ -1,186 +1,48 @@
 import { Gtk } from "ags/gtk4"
-
+import ActiveWindow from "./modules/active-window/ActiveWindow"
 import Clock from "./modules/clock/Clock"
 import Workspaces from "./modules/workspaces/Workspaces"
-import ActiveWindow from "./modules/active-window/ActiveWindow"
-
-import { MODULES } from "../config/Bar"
-
-
-/*
-============================================================
-Churchill Regions
-
-Defines the three permanent areas of the bar.
-
-LEFT:
-    Information about the current window.
-
-CENTRE:
-    Navigation and time.
-
-RIGHT:
-    User-configurable widget dock.
-
-This file controls layout only.
-
-Individual modules should not know where they live.
-
-============================================================
-*/
-
-
-/*
-============================================================
-Left Region
-
-Contains information about the active window.
-
-Future:
-- application icon
-- workspace indicator
-- window title
-- window details
-
-============================================================
-*/
-
-function LeftRegion() {
-
-    return (
-
-        <box
-            class="bar-left"
-
-            orientation={Gtk.Orientation.VERTICAL}
-
-            spacing={2}
-
-            hexpand
-        >
-
-         <ActiveWindow/>
-
-        </box>
-
-    )
-
-}
-
-
-
-/*
-============================================================
-Centre Region
-
-This area should remain visually centred.
-
-Future:
-- dynamic workspace count
-- clock popup
-- calendar
-- notifications
-
-============================================================
-*/
-
-function CentreRegion() {
-
-    return (
-
-        <box
-            class="bar-centre"
-
-            spacing={10}
-
-            halign={Gtk.Align.CENTER}
-
-        >
-
-        <Workspaces/>
-
-        <Clock/>
-
-
-        </box>
-
-    )
-
-}
-
-
-
-/*
-============================================================
-Right Region
-
-The dock lives here.
-
-The region itself does not know which widgets exist.
-
-============================================================
-*/
-
-function RightRegion() {
-
-    return (
-
-        <box
-            class="bar-right"
-
-            halign={Gtk.Align.END}
-
-            hexpand={false}
-
-        >
-
-            <label
-                class="placeholder-module"
-                label="☰"
-            />
-
-        </box>
-
-    )
-
-}
-
-
-
-/*
-============================================================
-Public Region Container
-
-This is imported by Bar.tsx.
-
-============================================================
-*/
+import Dock from "./Dock"
 
 export default function Regions() {
-
-
     return (
+        <centerbox
+            class="bar"
+            hexpand
+            halign={Gtk.Align.FILL}
+            valign={Gtk.Align.CENTER}
+        >
 
-        <centerbox class="churchill-regions">
-
-
-            <LeftRegion
+            <box
                 $type="start"
-            />
+                class="bar-left"
+                orientation={Gtk.Orientation.VERTICAL}
+                spacing={1}
+                valign={Gtk.Align.CENTER}
+            >
+                <ActiveWindow />
+            </box>
 
-
-            <CentreRegion
+            <box
                 $type="center"
-            />
+                class="bar-centre"
+                spacing={12}
+                valign={Gtk.Align.CENTER}
+                halign={Gtk.Align.CENTER}
+            >
+                <Workspaces />
+                <Clock />
+            </box>
 
-
-            <RightRegion
+            <box
                 $type="end"
-            />
-
+                class="bar-right"
+                valign={Gtk.Align.CENTER}
+                halign={Gtk.Align.END}
+            >
+                <Dock />
+            </box>
 
         </centerbox>
-
     )
-
 }

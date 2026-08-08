@@ -1,11 +1,19 @@
 {
     "colors": {
-        "background": "#16181d",
-        "surface": "#20242c",
-        "surface_hover": "#2a303b",
-        "text": "#ffffff",
-        "text_muted": "#9ca3af",
-        "accent": "#4d8dff"
+        "background": "#DDE3E8",
+        "background_light": "#E9EEF2",
+        "surface": "#F1F4F6",
+        "surface_elevated": "#F7F8F9",
+        "surface_hover": "#FFFFFF",
+        "text": "#252A30",
+        "text_muted": "#626A73",
+        "text_disabled": "#8D959E",
+        "border": "#737B84",
+        "border_highlight": "#C5CBD1",
+        "accent": "#668CC7",
+        "accent_light": "#8EACDA",
+        "accent_dark": "#496B9F",
+        "accent_surface": "#DCE5F2"
     },
 
     "dimensions": {
@@ -29,14 +37,64 @@
     },
 
     "effects": {
-        "border": "rgba(255,255,255,0.08)",
-        "shadow": "rgba(0,0,0,0.35)",
-        "opacity_muted": "0.65"
+        "shadow": "rgba(70, 80, 90, 0.24)",
+        "shadow_strong": "rgba(45, 55, 65, 0.32)",
+        "opacity_muted": 0.65,
+        "glass_opacity": 0.82,
+        "bar_opacity": 0.92
     },
 
     "components": {
         "bar_padding": "10px",
         "module_padding": "8px",
-        "module_radius": "10px"
+        "module_radius": "10px",
+        "bar_radius": "14px",
+        "bar_border_width": "1px"
+    },
+
+    "material": {
+        "bar": {
+            "background": "#EEF1F3",
+            "opacity": 0.72,
+            "border": "#59616B",
+            "border_opacity": 0.32,
+            "radius": "16px"
+        },
+
+        "surface": {
+            "background": "#E3E8EC",
+            "opacity": 0.58,
+            "border_opacity": 0.20,
+            "radius": "12px"
+        },
+
+        "control": {
+            "background": "#F7F9FA",
+            "opacity": 0.48,
+            "border_opacity": 0.28,
+            "radius": "9px"
+        },
+
+        "active": {
+            "background": "#B4CDEA",
+            "opacity": 0.55,
+            "border_opacity": 0.35
+        }
+    },
+
+    "shadows": {
+      "bar": {
+      "color": "#283038",
+      "opacity": 0.16,
+      "y": "8px",
+      "blur": "20px"
+    },
+
+    "surface": {
+      "color": "#283038",
+      "opacity": 0.12,
+      "y": "5px",
+      "blur": "14px"
     }
+  }
 }

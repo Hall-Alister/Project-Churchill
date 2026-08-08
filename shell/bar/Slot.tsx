@@ -1,6 +1,6 @@
 import { Gtk } from "ags/gtk4"
 
-import { DOCK } from "../config/Bar"
+import { DOCK } from "../core/Bar"
 
 
 /*
