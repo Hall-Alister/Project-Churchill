@@ -1,54 +1,42 @@
 {
     "colors": {
-
         "background": "#16181d",
-
         "surface": "#20242c",
-
         "surface_hover": "#2a303b",
-
         "text": "#ffffff",
-
         "text_muted": "#9ca3af",
-
         "accent": "#4d8dff"
-
     },
 
     "dimensions": {
-
         "bar_height": "42px",
-
         "space_xs": "4px",
-
         "space_sm": "8px",
-
         "space_md": "12px",
-
         "space_lg": "18px",
-
         "radius_sm": "4px",
-
         "radius_md": "8px",
-
         "radius_lg": "12px"
-
     },
 
     "typography": {
-
         "font_family": "Inter",
-
         "size_sm": "11px",
-
         "size_md": "14px",
-
         "size_lg": "18px",
-
         "weight_normal": "400",
-
         "weight_bold": "700"
+    },
 
+    "effects": {
+        "border": "rgba(255,255,255,0.08)",
+        "shadow": "rgba(0,0,0,0.35)",
+        "opacity_muted": "0.65"
+    },
+
+    "components": {
+        "bar_padding": "10px",
+        "module_padding": "8px",
+        "module_radius": "10px"
     }
-
 }
