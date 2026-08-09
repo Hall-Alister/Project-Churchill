@@ -1,4 +1,4 @@
-import { Astal, Gtk } from "ags/gtk4"
+import { Astal } from "ags/gtk4"
 import Regions from "./Regions"
 
 const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
@@ -12,10 +12,9 @@ export default function Bar() {
             exclusivity={Astal.Exclusivity.EXCLUSIVE}
             visible
         >
-            <Regions
-                hexpand
-                halign={Gtk.Align.FILL}
-            />
+            <box class="bar">
+                <Regions />
+            </box>
         </window>
     )
 }

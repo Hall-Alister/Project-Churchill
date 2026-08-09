@@ -1,0 +1,78 @@
+.bar-control-root {
+    min-width: 0;
+    min-height: 0;
+}
+
+.bar-control-button {
+    min-width: 34px;
+    min-height: 34px;
+
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: rgba(255, 255, 255, 0.88);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.10),
+        0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.bar-control-button:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.bar-control-button label {
+    font-size: 18px;
+}
+
+.bar-control-panel {
+    min-width: 260px;
+    min-height: 520px;
+
+    margin-left: 10px;
+    padding: 24px 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 28px;
+
+    background: rgba(20, 24, 30, 0.78);
+
+    color: rgba(255, 255, 255, 0.92);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.28),
+        0 28px 70px rgba(0, 0, 0, 0.22);
+}
+
+.bar-control-heading {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.bar-control-subheading {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.bar-control-placeholder {
+    margin-top: 12px;
+    padding: 16px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.bar-control-close {
+    margin-top: 12px;
+    padding: 10px 14px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.82);
+}

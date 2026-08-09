@@ -1,3 +1,5 @@
+import { getConfig } from "./core/config/store"
+
 import app from "ags/gtk4/app"
 
 import barCss from "./bar/bar.scss"
@@ -11,7 +13,11 @@ app.start({
     css: themeCss + barCss,
 
     main() {
+        const config = getConfig()
 
+        print("Churchill configuration loaded")
+        print(JSON.stringify(config, null, 2))
+        
         Bar()
 
     },

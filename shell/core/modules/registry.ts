@@ -1,50 +1,52 @@
-export type BarModuleDefinition = {
+export type ChurchillModule = {
     id: string
     name: string
     description: string
-    defaultEnabled: boolean
+    default_enabled: boolean
+    removable: boolean
 }
 
-export const BAR_MODULES: BarModuleDefinition[] = [
+
+export const MODULE_REGISTRY: ChurchillModule[] = [
+
     {
-        id: "activeWindow",
+        id: "active_window",
         name: "Active Window",
-        description: "Shows the currently focused application and window detail.",
-        defaultEnabled: true,
+        description: "Shows the focused application and current document.",
+        default_enabled: true,
+        removable: true,
     },
 
     {
         id: "workspaces",
         name: "Workspaces",
-        description: "Shows and switches Hyprland workspaces.",
-        defaultEnabled: true,
+        description: "Shows Hyprland workspaces and the active workspace.",
+        default_enabled: true,
+        removable: true,
     },
 
     {
-        id: "wifiBluetooth",
+        id: "wifi_bluetooth",
         name: "Wi-Fi & Bluetooth",
         description: "Network and Bluetooth controls.",
-        defaultEnabled: true,
+        default_enabled: true,
+        removable: true,
     },
 
     {
-        id: "systemMonitor",
-        name: "System Monitor",
-        description: "Fastfetch and htop system information.",
-        defaultEnabled: true,
+        id: "fastfetch_htop",
+        name: "Fastfetch & htop",
+        description: "System information and performance tools.",
+        default_enabled: true,
+        removable: true,
     },
 
     {
         id: "processes",
         name: "Processes",
         description: "Compact process monitor.",
-        defaultEnabled: true,
+        default_enabled: true,
+        removable: true,
     },
 
-    {
-        id: "barControls",
-        name: "Bar Controls",
-        description: "Controls Churchill's bar configuration.",
-        defaultEnabled: true,
-    },
 ]

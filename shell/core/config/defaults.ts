@@ -1,18 +1,46 @@
-export const DEFAULT_BAR_CONFIG = {
-    height: 73,
-    scale: 1,
-    fontSize: 14,
-    opacity: 0.94,
-    spacing: 8,
+export const DEFAULT_CONFIG = {
+    bar: {
+        enabled: true,
 
-    position: "top" as const,
+        position: "top",
+
+        thickness: 48,
+
+        scale: 1,
+
+        opacity: 0.72,
+
+        spacing: 8,
+
+        margin: 8,
+
+        radius: 16,
+
+        blur: true,
+
+        blur_strength: 6,
+
+        frost: true,
+
+        shadow: true,
+    },
 
     modules: {
-        activeWindow: true,
+        active_window: true,
         workspaces: true,
-        wifiBluetooth: true,
-        systemMonitor: true,
+
+        wifi_bluetooth: true,
+        fastfetch_htop: true,
         processes: true,
-        barControls: true,
     },
-}
+
+    behaviour: {
+        autohide: false,
+
+        reveal_on_edge: true,
+
+        animation_speed: 1,
+
+        show_tooltips: true,
+    },
+} as const

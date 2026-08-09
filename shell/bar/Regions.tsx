@@ -3,6 +3,7 @@ import ActiveWindow from "./modules/active-window/ActiveWindow"
 import Clock from "./modules/clock/Clock"
 import Workspaces from "./modules/workspaces/Workspaces"
 import Dock from "./Dock"
+import BarControl from "./modules/bar-control/BarControl"
 
 export default function Regions() {
     return (
@@ -41,6 +42,7 @@ export default function Regions() {
                 halign={Gtk.Align.END}
             >
                 <Dock />
+                <BarControl />
             </box>
 
         </centerbox>
