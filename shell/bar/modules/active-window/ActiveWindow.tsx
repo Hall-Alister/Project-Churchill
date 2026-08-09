@@ -1,71 +1,81 @@
-import { Gtk } from "ags/gtk4"
+import Hyprland from "gi://AstalHyprland"
+import { createBinding, createComputed } from "ags"
 
+const hyprland = Hyprland.get_default()
 
-/*
-============================================================
-Churchill Active Window Module
+const focusedClient = createBinding(
+    hyprland,
+    "focused-client",
+)
 
-Displays:
+function applicationName(client: any): string {
+    if (!client)
+        return "Desktop"
 
-TITLE
-DETAIL
+    const app = client.class || ""
 
-Example:
+    if (app === "kitty")
+        return "Kitty"
 
-Kitty
-hyprland.conf
+    if (app === "firefox")
+        return "Firefox"
 
-Responsibilities:
+    return app
+        .split(".")
+        .pop()
+        ?.replace(/^\w/, (c: string) => c.toUpperCase())
+        || "Desktop"
+}
 
-- Display active application
-- Display active window details
+function detailName(client: any): string {
+    if (!client)
+        return ""
 
-Future:
-- Hyprland IPC listener
-- Dynamic updates
-- Window icons
+    const app = (client.class || "").toLowerCase()
+    const raw = client.title || ""
 
-============================================================
-*/
+    if (app === "kitty") {
+        const match = raw.match(/([^/\\]+)\s*$/)
+        return match?.[1] || raw
+    }
 
+    if (app === "firefox") {
+        const match = raw.match(/^(.+?)\s*[-–—]\s*Mozilla Firefox$/)
+        return match?.[1] || raw
+    }
+
+    return raw
+}
+
+const application = createComputed(
+    () => applicationName(focusedClient()),
+)
+
+const detail = createComputed(
+    () => detailName(focusedClient()),
+)
 
 export default function ActiveWindow() {
 
     return (
-
         <box
-
             class="active-window"
-
-            orientation={Gtk.Orientation.VERTICAL}
-
+            orientation={1}
             spacing={2}
-
         >
 
             <label
-
                 class="active-window-title"
-
-                label="Project Churchill"
-
+                label={application}
                 xalign={0}
-
             />
 
-
             <label
-
                 class="active-window-detail"
-
-                label="First bar prototype"
-
+                label={detail}
                 xalign={0}
-
             />
 
         </box>
-
     )
-
 }

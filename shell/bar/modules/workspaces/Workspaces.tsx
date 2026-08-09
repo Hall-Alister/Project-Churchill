@@ -1,118 +1,42 @@
-import { createPoll } from "ags/time"
-import { exec } from "ags/process"
+import Hyprland from "gi://AstalHyprland"
 
+const hyprland = Hyprland.get_default()
 
-/*
-============================================================
-Churchill Workspace Module
+const WORKSPACES = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-Responsibilities:
+function isActive(id: number) {
+    return hyprland.get_focused_workspace()?.id === id
+}
 
-- Display workspace buttons
-- Track current workspace
-- Provide styling hooks
-
-Does NOT:
-
-- Control bar layout
-- Handle themes
-- Handle animations
-
-============================================================
-*/
-
-
-/*
-============================================================
-Current Workspace
-
-Hyprland exposes this through hyprctl.
-
-Example:
-
-workspace ID 3
-
-============================================================
-*/
-
-const activeWorkspace = createPoll(
-    "1",
-    1000,
-    () => {
-
-        try {
-
-            const output = exec(
-                "hyprctl activeworkspace -j"
-            )
-
-            const data = JSON.parse(output)
-
-            return String(data.id)
-
-        }
-
-        catch {
-
-            return "1"
-
-        }
-
-    }
-)
-
-
-
-/*
-============================================================
-Workspace Component
-
-============================================================
-*/
+function switchWorkspace(id: number) {
+    hyprland.dispatch("workspace", String(id))
+}
 
 export default function Workspaces() {
 
-
-    const spaces = [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-    ]
-
-
     return (
-
         <box
             class="workspaces"
-            spacing={8}
+            spacing={3}
         >
 
-            {
-                spaces.map((space) => (
+            {WORKSPACES.map((id) => (
 
-                    <label
+                <button
+                    class={isActive(id)
+                        ? "workspace active"
+                        : "workspace"
+                    }
 
-                        class={
-                            activeWorkspace(
-                                (current) =>
-                                    current === space
-                                    ? "workspace active"
-                                    : "workspace"
-                            )
-                        }
+                    onClicked={() => switchWorkspace(id)}
+                >
 
-                        label={space}
+                    <label label={String(id)} />
 
-                    />
+                </button>
 
-                ))
-
-            }
+            ))}
 
         </box>
-
     )
-
 }
