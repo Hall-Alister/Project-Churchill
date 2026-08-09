@@ -1,4 +1,5 @@
 import { Gtk } from "ags/gtk4"
+
 import ActiveWindow from "./modules/active-window/ActiveWindow"
 import Clock from "./modules/clock/Clock"
 import Workspaces from "./modules/workspaces/Workspaces"
@@ -8,17 +9,14 @@ import BarControl from "./modules/bar-control/BarControl"
 export default function Regions() {
     return (
         <centerbox
-            class="bar"
+            class="bar-regions"
             hexpand
-            halign={Gtk.Align.FILL}
             valign={Gtk.Align.CENTER}
         >
-
             <box
                 $type="start"
                 class="bar-left"
-                orientation={Gtk.Orientation.VERTICAL}
-                spacing={1}
+                spacing={8}
                 valign={Gtk.Align.CENTER}
             >
                 <ActiveWindow />
@@ -38,13 +36,13 @@ export default function Regions() {
             <box
                 $type="end"
                 class="bar-right"
+                spacing={8}
                 valign={Gtk.Align.CENTER}
                 halign={Gtk.Align.END}
             >
                 <Dock />
                 <BarControl />
             </box>
-
         </centerbox>
     )
 }

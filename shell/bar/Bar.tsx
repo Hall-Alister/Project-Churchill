@@ -8,13 +8,13 @@ export default function Bar() {
         <window
             name="churchill-bar"
             namespace="churchill"
+            class="bar"
             anchor={TOP | LEFT | RIGHT}
             exclusivity={Astal.Exclusivity.EXCLUSIVE}
             visible
+            heightRequest={48}
         >
-            <box class="bar">
-                <Regions />
-            </box>
+            <Regions />
         </window>
     )
 }
