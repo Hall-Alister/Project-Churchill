@@ -1,12 +1,6 @@
 import { Astal, Gtk } from "ags/gtk4"
 import app from "ags/gtk4/app"
 
-import {
-    getConfig,
-    resetConfig,
-    updateConfig,
-} from "../../../core/config/store"
-
 const { TOP, RIGHT, BOTTOM } = Astal.WindowAnchor
 
 function closePanel() {
@@ -18,8 +12,6 @@ function closePanel() {
 }
 
 export default function BarControlWindow() {
-    const config = getConfig()
-
     return (
         <window
             name="churchill-bar-control"
@@ -33,36 +25,139 @@ export default function BarControlWindow() {
             <box
                 class="bar-control-panel"
                 orientation={Gtk.Orientation.VERTICAL}
-                spacing={12}
+                spacing={14}
+                valign={Gtk.Align.CENTER}
             >
+
                 <box
-                    orientation={Gtk.Orientation.HORIZONTAL}
-                    spacing={8}
+                    orientation={Gtk.Orientation.VERTICAL}
+                    spacing={4}
                 >
+                    <label
+                        class="bar-control-heading"
+                        label="Churchill"
+                        halign={Gtk.Align.START}
+                    />
+
+                    <label
+                        class="bar-control-subheading"
+                        label="Bar Controls"
+                        halign={Gtk.Align.START}
+                    />
+                </box>
+
+                <box
+                    class="bar-control-section"
+                    orientation={Gtk.Orientation.VERTICAL}
+                    spacing={10}
+                >
+                    <label
+                        class="bar-control-section-title"
+                        label="Appearance"
+                        halign={Gtk.Align.START}
+                    />
+
                     <box
-                        orientation={Gtk.Orientation.VERTICAL}
-                        hexpand
+                        class="bar-control-row"
+                        spacing={12}
                     >
                         <label
-                            class="bar-control-heading"
+                            label="Thickness"
+                            hexpand
                             halign={Gtk.Align.START}
-                            label="Churchill"
                         />
 
-                        <label
-                            class="bar-control-subheading"
-                            halign={Gtk.Align.START}
-                            label="Bar Controls"
+                        <entry
+                            class="bar-control-entry"
+                            text="48"
+                            widthChars={4}
                         />
                     </box>
 
-                    <button
-                        class="bar-control-close"
-                        valign={Gtk.Align.START}
-                        onClicked={closePanel}
+                    <box
+                        class="bar-control-row"
+                        spacing={12}
                     >
-                        <label label="×" />
-                    </button>
+                        <label
+                            label="Font size"
+                            hexpand
+                            halign={Gtk.Align.START}
+                        />
+
+                        <entry
+                            class="bar-control-entry"
+                            text="14"
+                            widthChars={4}
+                        />
+                    </box>
+
+                    <box
+                        class="bar-control-row"
+                        spacing={12}
+                    >
+                        <label
+                            label="Scale"
+                            hexpand
+                            halign={Gtk.Align.START}
+                        />
+
+                        <entry
+                            class="bar-control-entry"
+                            text="1.0"
+                            widthChars={4}
+                        />
+                    </box>
+
+                    <box
+                        class="bar-control-row"
+                        spacing={12}
+                    >
+                        <label
+                            label="Opacity"
+                            hexpand
+                            halign={Gtk.Align.START}
+                        />
+
+                        <entry
+                            class="bar-control-entry"
+                            text="0.85"
+                            widthChars={5}
+                        />
+                    </box>
+
+                    <box
+                        class="bar-control-row"
+                        spacing={12}
+                    >
+                        <label
+                            label="Spacing"
+                            hexpand
+                            halign={Gtk.Align.START}
+                        />
+
+                        <entry
+                            class="bar-control-entry"
+                            text="8"
+                            widthChars={4}
+                        />
+                    </box>
+
+                    <box
+                        class="bar-control-row"
+                        spacing={12}
+                    >
+                        <label
+                            label="Corner radius"
+                            hexpand
+                            halign={Gtk.Align.START}
+                        />
+
+                        <entry
+                            class="bar-control-entry"
+                            text="16"
+                            widthChars={4}
+                        />
+                    </box>
                 </box>
 
                 <box
@@ -72,111 +167,53 @@ export default function BarControlWindow() {
                 >
                     <label
                         class="bar-control-section-title"
+                        label="Modules"
                         halign={Gtk.Align.START}
-                        label="Bar"
                     />
 
-                    <label
-                        halign={Gtk.Align.START}
-                        label={`Enabled: ${config.bar.enabled}`}
+                    <checkbutton
+                        label="Wifi and Bluetooth Menu"
                     />
 
-                    <label
-                        halign={Gtk.Align.START}
-                        label={`Position: ${config.bar.position}`}
+                    <checkbutton
+                        label="Fastfetch / htop"
                     />
 
-                    <label
-                        halign={Gtk.Align.START}
-                        label={`Thickness: ${config.bar.thickness}`}
+                    <checkbutton
+                        label="Processes Table"
                     />
 
-                    <label
-                        halign={Gtk.Align.START}
-                        label={`Scale: ${config.bar.scale}`}
+                    <checkbutton
+                        label="Active Window"
                     />
 
-                    <label
-                        halign={Gtk.Align.START}
-                        label={`Opacity: ${config.bar.opacity}`}
-                    />
-
-                    <label
-                        halign={Gtk.Align.START}
-                        label={`Spacing: ${config.bar.spacing}`}
-                    />
-
-                    <label
-                        halign={Gtk.Align.START}
-                        label={`Margin: ${config.bar.margin}`}
-                    />
-
-                    <label
-                        halign={Gtk.Align.START}
-                        label={`Radius: ${config.bar.radius}`}
-                    />
-                </box>
-
-                <box
-                    class="bar-control-section"
-                    orientation={Gtk.Orientation.VERTICAL}
-                    spacing={8}
-                >
-                    <label
-                        class="bar-control-section-title"
-                        halign={Gtk.Align.START}
-                        label="Effects"
-                    />
-
-                    <label
-                        halign={Gtk.Align.START}
-                        label={`Blur: ${config.bar.blur}`}
-                    />
-
-                    <label
-                        halign={Gtk.Align.START}
-                        label={`Frost: ${config.bar.frost}`}
-                    />
-
-                    <label
-                        halign={Gtk.Align.START}
-                        label={`Shadow: ${config.bar.shadow}`}
+                    <checkbutton
+                        label="Workspaces"
                     />
                 </box>
 
                 <box
                     class="bar-control-actions"
-                    orientation={Gtk.Orientation.VERTICAL}
                     spacing={8}
-                    valign={Gtk.Align.END}
-                    vexpand
+                    homogeneous
                 >
                     <button
-                        class="bar-control-action"
+                        class="bar-control-reset"
                         onClicked={() => {
-                            resetConfig()
-                            closePanel()
+                            print("Reset to default — function coming next")
                         }}
                     >
-                        <label label="Reset to Defaults" />
+                        <label label="Reset to Default" />
                     </button>
 
                     <button
-                        class="bar-control-action"
-                        onClicked={() => {
-                            updateConfig({
-                                bar: {
-                                    ...getConfig().bar,
-                                    opacity: 0.85,
-                                },
-                            })
-
-                            closePanel()
-                        }}
+                        class="bar-control-close"
+                        onClicked={closePanel}
                     >
-                        <label label="Test Save" />
+                        <label label="Close" />
                     </button>
                 </box>
+
             </box>
         </window>
     )
