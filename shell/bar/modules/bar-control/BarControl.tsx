@@ -12,7 +12,6 @@ export default function BarControl() {
     return (
         <button
             class="bar-control-button"
-            valign={3}
             onClicked={togglePanel}
         >
             <label label="☰" />
