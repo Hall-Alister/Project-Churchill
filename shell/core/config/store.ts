@@ -1,4 +1,5 @@
 import GLib from "gi://GLib"
+import { createState } from "ags"
 
 import { DEFAULT_CONFIG } from "./defaults"
 
@@ -51,37 +52,7 @@ function cloneDefaults(): ChurchillConfig {
 }
 
 function ensureConfigDirectory(): void {
-    const result = GLib.mkdir_with_parents(
-        CONFIG_DIR,
-        0o755,
-    )
-
-    if (result !== 0 && !GLib.file_test(CONFIG_DIR, GLib.FileTest.IS_DIR)) {
-        throw new Error(
-            `Could not create Churchill config directory: ${CONFIG_DIR}`,
-        )
-    }
-}
-
-function saveConfig(): void {
-    ensureConfigDirectory()
-
-    const text = JSON.stringify(
-        config,
-        null,
-        4,
-    )
-
-    const success = GLib.file_set_contents(
-        CONFIG_FILE,
-        text,
-    )
-
-    if (!success) {
-        throw new Error(
-            `Could not write Churchill config: ${CONFIG_FILE}`,
-        )
-    }
+    GLib.mkdir_with_parents(CONFIG_DIR, 0o755)
 }
 
 function loadConfig(): ChurchillConfig {
@@ -94,32 +65,58 @@ function loadConfig(): ChurchillConfig {
         }
 
         const text = new TextDecoder().decode(contents)
-
-        const saved = JSON.parse(text)
+        const loaded = JSON.parse(text)
 
         return {
             ...cloneDefaults(),
-            ...saved,
+            ...loaded,
+
+            bar: {
+                ...cloneDefaults().bar,
+                ...(loaded.bar ?? {}),
+            },
+
+            modules: {
+                ...cloneDefaults().modules,
+                ...(loaded.modules ?? {}),
+            },
+
+            behaviour: {
+                ...cloneDefaults().behaviour,
+                ...(loaded.behaviour ?? {}),
+            },
         }
     } catch {
         return cloneDefaults()
     }
 }
 
-ensureConfigDirectory()
-
 let config: ChurchillConfig = loadConfig()
 
-if (!GLib.file_test(CONFIG_FILE, GLib.FileTest.EXISTS)) {
-    saveConfig()
-}
+ensureConfigDirectory()
+
+export const [configState, setConfigState] =
+    createState(config)
 
 export function getConfig(): ChurchillConfig {
     return config
 }
 
-export function saveCurrentConfig(): void {
-    saveConfig()
+export function saveConfig(): void {
+    ensureConfigDirectory()
+
+    const text = JSON.stringify(
+        config,
+        null,
+        4,
+    )
+
+    GLib.file_set_contents(
+        CONFIG_FILE,
+        text,
+    )
+
+    setConfigState(config)
 }
 
 export function updateConfig(
@@ -128,6 +125,21 @@ export function updateConfig(
     config = {
         ...config,
         ...changes,
+
+        bar: {
+            ...config.bar,
+            ...(changes.bar ?? {}),
+        },
+
+        modules: {
+            ...config.modules,
+            ...(changes.modules ?? {}),
+        },
+
+        behaviour: {
+            ...config.behaviour,
+            ...(changes.behaviour ?? {}),
+        },
     }
 
     saveConfig()

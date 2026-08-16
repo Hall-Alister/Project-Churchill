@@ -1,17 +1,40 @@
 import { Astal, Gtk } from "ags/gtk4"
 import app from "ags/gtk4/app"
 
+import { getConfig } from "../../../core/config/store"
+
+import {
+    isModuleEnabled,
+    toggleModule,
+    type ChurchillModule,
+} from "./modules"
+
+import {
+    updateBarSetting,
+    resetBarSettings,
+} from "./settings"
+
+import {
+    closeBarControl,
+    resetChurchill,
+} from "./actions"
+
+import BarSlider from "./BarSlider"
+
 const { TOP, RIGHT, BOTTOM } = Astal.WindowAnchor
 
-function closePanel() {
-    const window = app.get_window("churchill-bar-control")
-
-    if (window) {
-        window.visible = false
-    }
-}
+const MODULES: Array<[ChurchillModule, string]> = [
+    ["active_window", "Active Window"],
+    ["workspaces", "Workspaces"],
+    ["wifi_bluetooth", "Wi-Fi & Bluetooth"],
+    ["fastfetch_htop", "Fastfetch / Htop"],
+    ["processes", "Processes"],
+]
 
 export default function BarControlWindow() {
+    const config = getConfig()
+    const bar = config.bar
+
     return (
         <window
             name="churchill-bar-control"
@@ -22,199 +45,196 @@ export default function BarControlWindow() {
             keymode={Astal.Keymode.ON_DEMAND}
             class="bar-control-window"
         >
-            <box
-                class="bar-control-panel"
-                orientation={Gtk.Orientation.VERTICAL}
-                spacing={14}
-                valign={Gtk.Align.CENTER}
+            <scrolledwindow
+                class="bar-control-scroll"
+                hscrollbarPolicy={Gtk.PolicyType.NEVER}
+                vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+                propagateNaturalWidth={true}
+                propagateNaturalHeight={false}
             >
-
                 <box
+                    class="bar-control-panel"
                     orientation={Gtk.Orientation.VERTICAL}
-                    spacing={4}
+                    spacing={16}
+                    valign={Gtk.Align.START}
                 >
-                    <label
-                        class="bar-control-heading"
-                        label="Churchill"
-                        halign={Gtk.Align.START}
-                    />
-
-                    <label
-                        class="bar-control-subheading"
-                        label="Bar Controls"
-                        halign={Gtk.Align.START}
-                    />
-                </box>
-
-                <box
-                    class="bar-control-section"
-                    orientation={Gtk.Orientation.VERTICAL}
-                    spacing={10}
-                >
-                    <label
-                        class="bar-control-section-title"
-                        label="Appearance"
-                        halign={Gtk.Align.START}
-                    />
-
                     <box
-                        class="bar-control-row"
+                        orientation={Gtk.Orientation.HORIZONTAL}
                         spacing={12}
                     >
+                        <box
+                            orientation={Gtk.Orientation.VERTICAL}
+                            hexpand
+                        >
+                            <label
+                                class="bar-control-heading"
+                                label="Churchill"
+                                halign={Gtk.Align.START}
+                            />
+
+                            <label
+                                class="bar-control-subheading"
+                                label="Bar Controls"
+                                halign={Gtk.Align.START}
+                            />
+                        </box>
+
+                        <button
+                            class="bar-control-close"
+                            onClicked={closeBarControl}
+                        >
+                            <label label="×" />
+                        </button>
+                    </box>
+
+                    <box
+                        class="bar-control-section"
+                        orientation={Gtk.Orientation.VERTICAL}
+                        spacing={10}
+                    >
                         <label
+                            class="bar-control-section-title"
+                            label="Modules"
+                            halign={Gtk.Align.START}
+                        />
+
+                        {MODULES.map(([module, label]) => (
+                            <button
+                                class={
+                                    isModuleEnabled(module)
+                                        ? "bar-control-module active"
+                                        : "bar-control-module"
+                                }
+                                onClicked={() => toggleModule(module)}
+                            >
+                                <box
+                                    orientation={Gtk.Orientation.HORIZONTAL}
+                                    spacing={10}
+                                >
+                                    <label
+                                        label={
+                                            isModuleEnabled(module)
+                                                ? "✓"
+                                                : "○"
+                                        }
+                                    />
+
+                                    <label
+                                        label={label}
+                                        hexpand
+                                        halign={Gtk.Align.START}
+                                    />
+                                </box>
+                            </button>
+                        ))}
+                    </box>
+
+                    <box
+                        class="bar-control-section"
+                        orientation={Gtk.Orientation.VERTICAL}
+                        spacing={14}
+                    >
+                        <label
+                            class="bar-control-section-title"
+                            label="Bar Appearance"
+                            halign={Gtk.Align.START}
+                        />
+
+                        <BarSlider
                             label="Thickness"
-                            hexpand
-                            halign={Gtk.Align.START}
+                            value={bar.thickness}
+                            min={32}
+                            max={80}
+                            step={1}
+                            suffix=" px"
+                            onChange={(value) =>
+                                updateBarSetting(
+                                    "thickness",
+                                    value,
+                                )
+                            }
                         />
 
-                        <entry
-                            class="bar-control-entry"
-                            text="48"
-                            widthChars={4}
-                        />
-                    </box>
-
-                    <box
-                        class="bar-control-row"
-                        spacing={12}
-                    >
-                        <label
-                            label="Font size"
-                            hexpand
-                            halign={Gtk.Align.START}
-                        />
-
-                        <entry
-                            class="bar-control-entry"
-                            text="14"
-                            widthChars={4}
-                        />
-                    </box>
-
-                    <box
-                        class="bar-control-row"
-                        spacing={12}
-                    >
-                        <label
-                            label="Scale"
-                            hexpand
-                            halign={Gtk.Align.START}
-                        />
-
-                        <entry
-                            class="bar-control-entry"
-                            text="1.0"
-                            widthChars={4}
-                        />
-                    </box>
-
-                    <box
-                        class="bar-control-row"
-                        spacing={12}
-                    >
-                        <label
+                        <BarSlider
                             label="Opacity"
-                            hexpand
-                            halign={Gtk.Align.START}
+                            value={bar.opacity}
+                            min={0.2}
+                            max={1}
+                            step={0.01}
+                            onChange={(value) =>
+                                updateBarSetting(
+                                    "opacity",
+                                    value,
+                                )
+                            }
                         />
 
-                        <entry
-                            class="bar-control-entry"
-                            text="0.85"
-                            widthChars={5}
-                        />
-                    </box>
-
-                    <box
-                        class="bar-control-row"
-                        spacing={12}
-                    >
-                        <label
+                        <BarSlider
                             label="Spacing"
-                            hexpand
-                            halign={Gtk.Align.START}
+                            value={bar.spacing}
+                            min={0}
+                            max={24}
+                            step={1}
+                            suffix=" px"
+                            onChange={(value) =>
+                                updateBarSetting(
+                                    "spacing",
+                                    value,
+                                )
+                            }
                         />
 
-                        <entry
-                            class="bar-control-entry"
-                            text="8"
-                            widthChars={4}
+                        <BarSlider
+                            label="Margin"
+                            value={bar.margin}
+                            min={0}
+                            max={24}
+                            step={1}
+                            suffix=" px"
+                            onChange={(value) =>
+                                updateBarSetting(
+                                    "margin",
+                                    value,
+                                )
+                            }
+                        />
+
+                        <BarSlider
+                            label="Radius"
+                            value={bar.radius}
+                            min={0}
+                            max={32}
+                            step={1}
+                            suffix=" px"
+                            onChange={(value) =>
+                                updateBarSetting(
+                                    "radius",
+                                    value,
+                                )
+                            }
                         />
                     </box>
 
                     <box
-                        class="bar-control-row"
-                        spacing={12}
+                        orientation={Gtk.Orientation.HORIZONTAL}
+                        spacing={10}
                     >
-                        <label
-                            label="Corner radius"
-                            hexpand
-                            halign={Gtk.Align.START}
-                        />
+                        <button
+                            class="bar-control-action"
+                            onClicked={resetBarSettings}
+                        >
+                            <label label="Reset Bar" />
+                        </button>
 
-                        <entry
-                            class="bar-control-entry"
-                            text="16"
-                            widthChars={4}
-                        />
+                        <button
+                            class="bar-control-action"
+                            onClicked={resetChurchill}
+                        >
+                            <label label="Reset Everything" />
+                        </button>
                     </box>
                 </box>
-
-                <box
-                    class="bar-control-section"
-                    orientation={Gtk.Orientation.VERTICAL}
-                    spacing={8}
-                >
-                    <label
-                        class="bar-control-section-title"
-                        label="Modules"
-                        halign={Gtk.Align.START}
-                    />
-
-                    <checkbutton
-                        label="Wifi and Bluetooth Menu"
-                    />
-
-                    <checkbutton
-                        label="Fastfetch / htop"
-                    />
-
-                    <checkbutton
-                        label="Processes Table"
-                    />
-
-                    <checkbutton
-                        label="Active Window"
-                    />
-
-                    <checkbutton
-                        label="Workspaces"
-                    />
-                </box>
-
-                <box
-                    class="bar-control-actions"
-                    spacing={8}
-                    homogeneous
-                >
-                    <button
-                        class="bar-control-reset"
-                        onClicked={() => {
-                            print("Reset to default — function coming next")
-                        }}
-                    >
-                        <label label="Reset to Default" />
-                    </button>
-
-                    <button
-                        class="bar-control-close"
-                        onClicked={closePanel}
-                    >
-                        <label label="Close" />
-                    </button>
-                </box>
-
-            </box>
+            </scrolledwindow>
         </window>
     )
 }

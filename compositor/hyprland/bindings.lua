@@ -33,17 +33,32 @@ hl.bind(
 
 -- Focus
 
-hl.bind(mod .. " + LEFT",  hl.dsp.window.focus("l"))
-hl.bind(mod .. " + RIGHT", hl.dsp.window.focus("r"))
-hl.bind(mod .. " + UP",    hl.dsp.window.focus("u"))
-hl.bind(mod .. " + DOWN",  hl.dsp.window.focus("d"))
+hl.bind(
+    mod .. " + LEFT",
+    hl.dsp.focus({ direction = "l" })
+)
+
+hl.bind(
+    mod .. " + RIGHT",
+    hl.dsp.focus({ direction = "r" })
+)
+
+hl.bind(
+    mod .. " + UP",
+    hl.dsp.focus({ direction = "u" })
+)
+
+hl.bind(
+    mod .. " + DOWN",
+    hl.dsp.focus({ direction = "d" })
+)
 
 -- Workspaces
 
 for i = 1, 9 do
     hl.bind(
         mod .. " + " .. i,
-        hl.dsp.workspace(i),
+        hl.dsp.focus({ workspace = i }),
         { description = "Switch to workspace " .. i }
     )
 
@@ -60,12 +75,12 @@ end
 
 hl.bind(
     mod .. " + CTRL + RIGHT",
-    hl.dsp.workspace("e+1")
+    hl.dsp.focus({ workspace = "e+1" })
 )
 
 hl.bind(
     mod .. " + CTRL + LEFT",
-    hl.dsp.workspace("e-1")
+    hl.dsp.focus({ workspace = "e-1" })
 )
 
 -- Exit Hyprland
